@@ -1,0 +1,91 @@
+/* body{
+    background-color: #fefefe;
+} */
+
+
+@media only screen and (max-width: 600px){
+    /* body{
+        background-color: skyblue;
+    } */
+    form{
+        background-color: white;
+        border: 1px solid black;
+        padding: 4px 14px 20px 14px;
+        width: 240px;
+        border-radius: 24px;
+    }
+    .register-form-name{
+        flex-direction: column;
+        row-gap: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+
+.register-form{
+    margin-top: 40px;
+    padding-left: 430px;
+    padding-right: 430px;
+}
+
+form{
+    border-radius: 12px;
+    border: 1px solid rgb(192, 190, 190);
+    padding: 4px 14px 20px 14px;
+}
+.register-form-title{
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    padding-bottom: 2px;
+}
+.register-form-credentials, .register-form-name{
+    margin-top: 8px;
+    display: flex;
+}
+.register-form-name{
+    justify-content: center;
+    column-gap: 4px;
+}
+.register-form-button{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 12px; */
+}
+.register-form-button{
+    font-size: 14px;
+    font-weight: 500;
+
+    background-color: black;
+    color: #F4FDFF;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+    margin-bottom: 8px;
+    /* padding: 10px 80px 10px 80px; */
+
+    border: none;
+    border-radius: 2px;
+}
+.register-form-button input:hover{
+    opacity: 0.7;
+}
+.register-form-button input:active{
+    opacity: 0.4;
+}
+.register-form-credentials input, .register-form-name input{
+    font-size: 12px;
+    height: 34px;
+    border: 0.4px solid rgb(192, 190, 190);
+    border-radius: 4px;
+
+    padding-left: 12px;
+
+    flex: 1;
+}
+.form-field input::placeholder{
+    font-size: 12px;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel ="stylesheet" href="../static/styles/global.css">
+        <link rel="stylesheet" href="../static/styles/register.css">
+        <link rel="stylesheet" href="../static/styles/login.css">
+
+
+        {% if title %}
+            <title>Resource - {{ title }} </title>
+        {% else %}
+            <title>Resource</title>
+        {% endif %}
+    </head>
+    <body>
+        <div class="header-main-pg">
+            <div class="left">
+                <div class="main-btn-main-pg">
+                    <a href="{{ url_for('home') }}" class="home-btn-link-main">FourthCause</a>
+                </div>
+            </div>
+            <div class="right">
+                {% if current_user.is_authenticated %}
+                    <!-- TO DO: create a separate class for Account and Logout divs -->
+                    <div class="register-btn-main-pg">
+                        <a href="{{ url_for('account') }}" class="home-btn-link">{{ current_user.username }}</a>
+                    </div>
+                    <div class="account-btn-main-pg">
+                        <a href="{{ url_for('logout') }}" class="home-btn-link">Log out</a>
+                    </div>
+                {% else %}
+                <div class="register-btn-main-pg">
+                    <a href="{{ url_for('register') }}" class="home-btn-link">Register</a>
+                </div>
+                <div class="account-btn-main-pg">
+                    <a href="{{ url_for('login') }}" class="home-btn-link">Log in</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% block header %}{% endblock %}
+
+        <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container" style="padding: 40px">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %} -->
+
+        {% block content %}{% endblock %}
+        
+
+    </body>
+</html>

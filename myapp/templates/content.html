@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+<div class="content-div">
+    {% for data in database %}
+    <a href="{{data['link']}}" target="_blank">
+        <div class="content-item">
+            <h3>{{data['title']}}</h3>
+            <img src="{{data['image']}}">
+            <div class="content-item-description">{{ data['description']}}</div>
+            <p class="content-item-lang">Lang: <span>{{data['language']}}</span></p>
+            <p class="content-item-source">Source: <span>{{data['source']}}</span></p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content %}
