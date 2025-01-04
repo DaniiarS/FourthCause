@@ -100,7 +100,7 @@ def import_data(file_name, database):
                     line[3] = 'English'
                 elif line[3] == 'rus':
                     line[3] = 'Russian'
-                print(file_name, line[1])
+                # print(file_name, line[1])
                 database[file_name].append(
                     {
                         'title': line[0],
