@@ -384,6 +384,7 @@ body{
     
         align-items: stretch;
         margin-left: 12px;
+        /* the following CS property determines the position of all listed cards in section pages */
         justify-content: flex-start;
     }
     .content-div-home{
@@ -467,7 +468,7 @@ body{
         width: 224px;
         height: 160px;
         object-fit: contain;
-        object-position: left;
+        object-position: center;
     
         /* border: 1px solid black; */
     }
