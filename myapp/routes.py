@@ -108,7 +108,8 @@ def import_data(file_name, database):
                         'description': line[2],
                         'language': line[3],
                         'source': line[4],
-                        'link': line[5]
+                        'link': line[5],
+                        'type': line[6],
                     }
                 )
     except:

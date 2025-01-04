@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="main-screen">
-    <div class="main-screen-table">
+    <div class="main-screen-table-laptop">
         <ul class="list-content">
             <a href="{{ url_for('render_page', path='intro_to_cs') }}"><li>Introduction to Computer Science</li></a>
             <a href="{{ url_for('render_page', path='programming101')}} "><li>Programming 101</li></a>
@@ -11,13 +11,13 @@
             <a href="{{ url_for('render_page', path='computer_networks') }}"><li>Computer Networks</li></a>
             <a href="{{ url_for('render_page', path='computer_architecture') }}"><li>Computer Architecture</li></a>
             <a href="{{ url_for('render_page', path='operating_systems') }}"><li>Opearting Systems</li></a>
+            <a href="{{ url_for('render_page', path='artificial_intelligence')}}"><li>Artificial Intelligence</li></a>
             <a href="{{ url_for('render_page', path='mathematics') }}"><li>Mathematics</li></a>
             <a href="{{ url_for('render_page', path='physics') }}"><li>Physics</li></a>
-            <a href="{{ url_for('render_page', path='artificial_intelligence')}}"><li>Artificial Intelligence</li></a>
         </ul>
     </div>
     <div class="main-screen-header">
-        <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="main-screen-logo">     <!-- style="display: flex; flex-direction: column; justify-content: center; -->
             <h1>FourthCause</h1>
             <p class="greetings-2">Resources that will
             contribute to your learning journey in Computer Science.</p>
@@ -76,10 +76,6 @@
             </div>
         </div>
     </div>
-</div>
-<div style="text-align: center; margin-top: 100px">
-    <q style="font-size: 14px; margin-right: 15px; font-style: italic; color: rgb(80, 80, 80)">We solve complex problems by orchestrating electrons</q>
-    <p>Soon to come: more playlists related to Mathematics required to Computer Science,<br>more playlists related to different fields of Computer Science, books, and platforms to practice writing a code</p>
 </div>
 
 {% endblock content %}

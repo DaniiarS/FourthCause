@@ -21,25 +21,61 @@
                     <a href="{{ url_for('home') }}" class="home-btn-link-main">FourthCause</a>
                 </div>
             </div>
+            <div class="middle">
+                <!-- <a href="{{ url_for('home') }}" class="home-btn-link-main">FourthCause</a> -->
+            </div>
             <div class="right">
                 {% if current_user.is_authenticated %}
                     <!-- TO DO: create a separate class for Account and Logout divs -->
-                    <div class="register-btn-main-pg">
+                    <!-- <div class="register-btn-main-pg">
                         <a href="{{ url_for('account') }}" class="home-btn-link">{{ current_user.username }}</a>
                     </div>
                     <div class="account-btn-main-pg">
                         <a href="{{ url_for('logout') }}" class="home-btn-link">Log out</a>
-                    </div>
+                    </div> -->
                 {% else %}
                 <div class="register-btn-main-pg">
-                    <a href="{{ url_for('register') }}" class="home-btn-link">Register</a>
+                    <p class='header-menu-button' onclick=displayMenu() style="display: inline-block">Menu</p>
+                    <!-- <a href="{{ url_for('register') }}" class="home-btn-link">Register</a> -->
                 </div>
-                <div class="account-btn-main-pg">
+                <!-- <div class="account-btn-main-pg">
                     <a href="{{ url_for('login') }}" class="home-btn-link">Log in</a>
-                </div>
+                </div> -->
                 {% endif %}
             </div>
         </div>
+
+        <script>
+            function displayMenu(){
+                const menuButton = document.querySelector('.main-screen-table');
+                const styles = window.getComputedStyle(menuButton);
+                console.log(styles.position);
+                if(styles.display === 'block'){
+                    menuButton.style.display = 'none';
+                    document.querySelector('.header-menu-button').textContent = 'Menu';
+                }
+                else{
+                    menuButton.style.display = 'block';
+                    document.querySelector('.header-menu-button').textContent = 'Close';
+                }
+            }
+        </script>
+
+
+<div class="main-screen-table">
+    <ul class="list-content">
+        <a href="{{ url_for('render_page', path='intro_to_cs') }}"><li>Introduction to Computer Science</li></a>
+        <a href="{{ url_for('render_page', path='programming101')}} "><li>Programming 101</li></a>
+        <a href="{{ url_for('render_page', path='data_structures_and_algorithms') }}"><li>Data Structures and Algorithms</li></a>
+        <a href="{{ url_for('render_page', path='data_bases') }}"><li>Data Bases</li></a>
+        <a href="{{ url_for('render_page', path='computer_networks') }}"><li>Computer Networks</li></a>
+        <a href="{{ url_for('render_page', path='computer_architecture') }}"><li>Computer Architecture</li></a>
+        <a href="{{ url_for('render_page', path='operating_systems') }}"><li>Opearting Systems</li></a>
+        <a href="{{ url_for('render_page', path='artificial_intelligence')}}"><li>Artificial Intelligence</li></a>
+        <a href="{{ url_for('render_page', path='mathematics') }}"><li>Mathematics</li></a>
+        <a href="{{ url_for('render_page', path='physics') }}"><li>Physics</li></a>
+    </ul>
+</div>
 
         {% block header %}{% endblock %}
 
@@ -55,8 +91,13 @@
             {% endif %}
         {% endwith %} -->
 
-        {% block content %}{% endblock %}
-        
+        {% block content %}
 
+        {% endblock %}
+
+        <div class="footer" style="text-align: center; display: flex; flex-direction: column; align-self: center; justify-content: flex-end;">
+            <q style="font-size: 14px; margin-right: 15px; font-style: italic; color: rgb(80, 80, 80)">We solve complex problems by orchestrating electrons</q>
+            <p style="font-size: 10px;">Soon to come: more playlists related to Mathematics required to Computer Science. More playlists related to different fields of Computer Science, books, and platforms to practice writing a code</p>
+        </div>
     </body>
 </html>
