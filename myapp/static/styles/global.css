@@ -99,7 +99,7 @@ body{
         margin-left: 0px;
         margin-right: 0px;
 
-        height: 34vh;
+        height: auto;
         width: 91%;
         position: fixed;
         z-index: 2;
