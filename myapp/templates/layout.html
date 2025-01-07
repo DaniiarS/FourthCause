@@ -37,8 +37,10 @@
                         <a href="{{ url_for('logout') }}" class="home-btn-link">Log out</a>
                     </div> -->
                 {% else %}
-                <div class="register-btn-main-pg">
-                    <p class='header-menu-button' onclick=displayMenu() style="display: inline-block">Menu</p>
+                <div class="register-btn-main-pg" onclick=displayMenu()>
+                    <p class='header-menu-button' style="display: inline-block">Menu</p>
+                    <img class='menu-bar-icon' src="{{ url_for('static', filename='images/menu-bar.png') }}">
+                    <img class='close-icon' src="{{ url_for('static', filename='images/close-icon.png') }}" style="display: none">
                     <!-- <a href="{{ url_for('register') }}" class="home-btn-link">Register</a> -->
                 </div>
                 <!-- <div class="account-btn-main-pg">
@@ -50,16 +52,21 @@
 
         <script>
             function displayMenu(){
+
                 const menuButton = document.querySelector('.main-screen-table');
                 const styles = window.getComputedStyle(menuButton);
-                console.log(styles.position);
+                
                 if(styles.display === 'block'){
                     menuButton.style.display = 'none';
                     document.querySelector('.header-menu-button').textContent = 'Menu';
+                    document.querySelector('.close-icon').setAttribute('style', 'display:none');
+                    document.querySelector('.menu-bar-icon').setAttribute('style', 'display:inline');
                 }
                 else{
                     menuButton.style.display = 'block';
                     document.querySelector('.header-menu-button').textContent = 'Close';
+                    document.querySelector('.close-icon').setAttribute('style', 'display:inline');
+                    document.querySelector('.menu-bar-icon').setAttribute('style', 'display:none');
                 }
             }
         </script>
