@@ -29,3 +29,16 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post({self.title})"
+    
+class Card(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(30), nullable=False)
+    image_file = db.Column(db.String(20), nullable=False)
+    description = db.Column(db.String(30), nullable=False)
+    language = db.Column(db.String(3), nullable=False)
+    source = db.Column(db.String(20), nullable=False)
+    link = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return f"Title: {self.title}\nDescription: {self.description}\nSource: {self.source}"
