@@ -33,6 +33,7 @@ class Post(db.Model):
 class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(20), nullable=False)
+    field = db.Column(db.String(30), nullable=False)
     title = db.Column(db.String(30), nullable=False)
     image_file = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(30), nullable=False)
