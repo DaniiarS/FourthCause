@@ -5,21 +5,21 @@
 {% block content %}
 <div class="content-div">
     {% for data in database %}
-        {% if data['type'] != 'pdf' %}
+        {% if data['category'] != 'book' %}
             <a href="{{data['link']}}" target="_blank">
                 <div class="content-item">
                     <h3>{{data['title']}}</h3>
-                    <img src="{{data['image']}}">
-                    <div class="content-item-description">{{ data['description']}}</div>
+                    <img src="{{ url_for('static', filename='images/')}}{{data['field']}}/{{data['image_file']}}">
+                    <div class="content-item-description">{{ data.description}}</div>
                     <p class="content-item-lang">Lang: <span>{{data['language']}}</span></p>
                     <p class="content-item-source">Source: <span>{{data['source']}}</span></p>
                 </div>
             </a>
         {% else %}
-        <a href="{{ url_for('static', filename=data['link'])}}" target="_blank">
+        <a href="{{ url_for('static', filename="textbooks/")}}{{data['link']}}" target="_blank">
             <div class="content-item">
                 <h3>{{data['title']}}</h3>
-                <img src="{{data['image']}}">
+                <img src="{{ url_for('static', filename='images/')}}{{data['field']}}/{{data['image_file']}}">
                 <div class="content-item-description">{{ data['description']}}</div>
                 <p class="content-item-lang">Lang: <span>{{data['language']}}</span></p>
                 <p class="content-item-source">Source: <span>{{data['source']}}</span></p>

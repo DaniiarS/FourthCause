@@ -1,7 +1,7 @@
 from myapp import app, db, bcrypt
 from flask import render_template, url_for, request, redirect, flash, abort
 from myapp.forms import RegisterForm, LoginForm
-from myapp.models import User
+from myapp.models import User, Card
 from flask_login import login_user, logout_user, current_user, login_required
 
 # For my testing database
@@ -87,44 +87,99 @@ def account():
 def about():
     return render_template('about.html')
 
-def import_data(file_name, database):
-    # if file_name in database.keys():
-    #     return database[file_name]
+# def load_data(database):
+#     # if file_name in database.keys():
+#     #     return database[file_name]
     
-    try:
-        with open(f'myapp/database/{file_name}.csv', 'r') as file:
-            reader = csv.reader(file)
-            database[file_name] = []
-            for line in reader:
-                if line[3] == 'eng':
-                    line[3] = 'English'
-                elif line[3] == 'rus':
-                    line[3] = 'Russian'
-                # print(file_name, line[1])
-                database[file_name].append(
-                    {
-                        'title': line[0],
-                        'image': f'static/images/{file_name}/{line[1]}',
-                        'description': line[2],
-                        'language': line[3],
-                        'source': line[4],
-                        'link': line[5],
-                        'type': line[6],
-                    }
-                )
-    except:
-        raise ReferenceError
+#     try:
+#         # with open(f'myapp/database/{file_name}.csv', 'r') as file:
+#         #     reader = csv.reader(file)
+#         #     database[file_name] = []
+#         #     for line in reader:
+#         #         if line[3] == 'eng':
+#         #             line[3] = 'English'
+#         #         elif line[3] == 'rus':
+#         #             line[3] = 'Russian'
+#         #         # print(file_name, line[1])
+#         #         database[file_name].append(
+#         #             {
+#         #                 'title': line[0],
+#         #                 'image': f'static/images/{file_name}/{line[1]}',
+#         #                 'description': line[2],
+#         #                 'language': line[3],
+#         #                 'source': line[4],
+#         #                 'link': line[5],
+#         #                 'type': line[6],
+#         #             }
+#         #         )
 
-    return database[file_name]
+#     except:
+#         raise ReferenceError
+
+#     return database[file_name]
 
 
-@app.route('/<path>')
-def render_page(path):
-    try:
-        return render_template(f'{path}.html', database=import_data(path, database), path=path)
-    except FileNotFoundError:
-        abort(404)  # Return a 404 error for missing files
-    except Exception as e:
-        app.logger.error(f"Error processing request for {path}: {e}")
-        abort(500)  # Return a generic 500 error for unexpected issues
-    return render_template(f'{path}.html', database=import_data(path, database), path=path)
+
+# VIEW FUNCTOINS:
+
+@app.route('/physics')
+def physics():
+    database = Card.query.filter(Card.field==f"physics")
+    return render_template(f"physics.html", database=database)
+
+@app.route('/intro_to_cs')
+def intro_to_cs():
+    database = Card.query.filter(Card.field==f"intro_to_cs")
+    return render_template(f"intro_to_cs.html", database=database)
+
+@app.route('/programming101')
+def programming101():
+    database = Card.query.filter(Card.field==f"programming101")
+    return render_template(f"programming101.html", database=database)
+
+@app.route('/data_structures_and_algorithms')
+def data_structures_and_algorithms():
+    database = Card.query.filter(Card.field==f"data_structures_and_algorithms")
+    return render_template(f"data_structures_and_algorithms.html", database=database)
+
+@app.route('/data_bases')
+def data_bases():
+    database = Card.query.filter(Card.field==f"data_bases")
+    return render_template(f"data_bases.html", database=database)
+
+@app.route('/computer_networks')
+def computer_networks():
+    database = Card.query.filter(Card.field==f"computer_networks")
+    return render_template(f"computer_networks.html", database=database)
+
+@app.route('/computer_architecture')
+def computer_architecture():
+    database = Card.query.filter(Card.field==f"computer_architecture")
+    return render_template(f"computer_architecture.html", database=database)
+
+@app.route('/operating_systems')
+def operating_systems():
+    database = Card.query.filter(Card.field==f"operating_systems")
+    return render_template(f"operating_systems.html", database=database)
+
+@app.route('/artificial_intelligence')
+def artificial_intelligence():
+    database = Card.query.filter(Card.field==f"artificial_intelligence")
+    return render_template(f"artificial_intelligence.html", database=database)
+
+@app.route('/mathematics')
+def mathematics():
+    database = Card.query.filter(Card.field==f"mathematics")
+    return render_template(f"mathematics.html", database=database)
+
+
+# @app.route('/<path>')
+# def render_page(path):
+#     try:
+#         return render_template(f'{path}.html', database=import_data(path, database), path=path)
+#     except FileNotFoundError:
+#         abort(404)  # Return a 404 error for missing files
+#     except Exception as e:
+#         app.logger.error(f"Error processing request for {path}: {e}")
+#         abort(500)  # Return a generic 500 error for unexpected issues
+#     return render_template(f'{path}.html', database=import_data(path, database), path=path)
