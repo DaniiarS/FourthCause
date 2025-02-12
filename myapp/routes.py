@@ -13,6 +13,7 @@ database = {}
 print("Route module is executed")
 
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -42,8 +43,6 @@ def register():
 
     return render_template('register.html', title="Register", form=form)
 
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if current_user.is_authenticated:
@@ -68,56 +67,19 @@ def login():
             print('Unsuccessful attempt to log in. Check email and passwrod.', 'danger')
     return render_template('login.html', title="Login", form=form)
 
-
-
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('home'))
-
-
 
 @app.route('/account')
 @login_required # this decorator will require a user to be Loged In, to continue accessing the page. Therfore, it should redirect the anonymous user to log in page. To make the redirect work we have to set login_manager.login_view = 'function_name' in __init__.py
 def account():
     return render_template('account.html', title="Account")
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-# def load_data(database):
-#     # if file_name in database.keys():
-#     #     return database[file_name]
-    
-#     try:
-#         # with open(f'myapp/database/{file_name}.csv', 'r') as file:
-#         #     reader = csv.reader(file)
-#         #     database[file_name] = []
-#         #     for line in reader:
-#         #         if line[3] == 'eng':
-#         #             line[3] = 'English'
-#         #         elif line[3] == 'rus':
-#         #             line[3] = 'Russian'
-#         #         # print(file_name, line[1])
-#         #         database[file_name].append(
-#         #             {
-#         #                 'title': line[0],
-#         #                 'image': f'static/images/{file_name}/{line[1]}',
-#         #                 'description': line[2],
-#         #                 'language': line[3],
-#         #                 'source': line[4],
-#         #                 'link': line[5],
-#         #                 'type': line[6],
-#         #             }
-#         #         )
-
-#     except:
-#         raise ReferenceError
-
-#     return database[file_name]
-
 
 
 # VIEW FUNCTOINS:

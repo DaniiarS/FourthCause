@@ -5,6 +5,9 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+/* RESIZE IMAGES TO: 224x160 px */
+
 /* Samrtphones */
 @media (max-width: 480px){
     
